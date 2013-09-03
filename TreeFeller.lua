@@ -1,7 +1,7 @@
 --TREE FELLER
---v0.3
---Latest change: Turtle now destroys more leaves on the way up
---0.2 - Combined into one script
+--v0.3.1
+--Latest Change: Turtle now destroys more leaves on the way up
+--Latest Minor Revision: Fixing up if Statements
 --Author V38
 
 function Main()
@@ -16,14 +16,14 @@ end
 function Fell()
     inLeaves = false
     while turtle.detect() do
-        if inLeaves do
+        if inLeaves then
             for i=1,4 do
                 turtle.turnRight()
                 turtle.dig()
             end
         end
         turtle.dig()
-        if turtle.detect() do
+        if turtle.detectUp() then
             turtle.digUp()
             inLeaves = true
         end
@@ -36,7 +36,7 @@ end
 
 function Refuel()
     turtle.select(16)
-    turtle.refuel(5)
+    turtle.refuel(1)
 end
 
 function Plant()
