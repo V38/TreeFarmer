@@ -1,7 +1,7 @@
 --TREE FELLER
---v0.3.1
+--v0.3.2
 --Latest Change: Turtle now destroys more leaves on the way up
---Latest Minor Revision: Fixing up if Statements
+--Latest Minor Revision: Add Delay and prevent logs going in the wrong slot
 --Author V38
 
 function Main()
@@ -10,10 +10,12 @@ function Main()
         Fell()
         Refuel()
         Store()
+        sleep(20)
     end
 end
 
 function Fell()
+    turtle.select(1)
     inLeaves = false
     while turtle.detect() do
         if inLeaves then
