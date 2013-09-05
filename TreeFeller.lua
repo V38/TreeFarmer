@@ -1,7 +1,7 @@
 --TREE FELLER
---v0.3.1
---Latest Change: Turtle now destroys more leaves on the way up
---Latest Minor Revision: Fixing up if Statements
+--v0.4
+--Latest Change: Turtle now destroys even more leaves, crossing the tree as it goes
+--Latest Minor Revision: v0.3.2 (Lost)
 --Author V38
 
 function Main()
@@ -17,10 +17,17 @@ function Fell()
     inLeaves = false
     while turtle.detect() do
         if inLeaves then
-            for i=1,4 do
-                turtle.turnRight()
-                turtle.dig()
-            end
+            SpinDig()
+            turtle.forward()
+            turtle.dig()
+            turtle.forward()
+            SpinDig()
+            turtle.turnRight()
+            turtle.turnRight()
+            turtle.forward()
+            turtle.forward()
+            turtle.turnRight()
+            turtle.turnRight()
         end
         turtle.dig()
         if turtle.detectUp() then
@@ -31,6 +38,13 @@ function Fell()
     end
     while not turtle.detectDown() do
         turtle.down()
+    end
+end
+
+function SpinDig()
+    for i=1,4 do
+        turtle.turnRight()
+        turtle.dig()
     end
 end
 
