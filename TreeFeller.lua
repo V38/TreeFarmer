@@ -1,8 +1,9 @@
 --TREE FELLER
---v0.4
---Latest Change: Turtle now destroys even more leaves, crossing the tree as it goes
---Latest Minor Revision: v0.3.2 (Lost)
---Author V38
+--Plants then cuts down a tree, harvesting saplings if possible.
+--v0.4.1
+--Latest Major Change: Turtle now destroys even more leaves, crossing the tree as it goes
+--Latest Minor Change: Destroys leaves all around the central trunk now, should give a decent harvest of saplings
+--Author: V38
 
 function Main()
     while true do
@@ -19,7 +20,7 @@ function Fell()
         if inLeaves then
             SpinDig()
             turtle.forward()
-            turtle.dig()
+            SpinDig()
             turtle.forward()
             SpinDig()
             turtle.turnRight()
