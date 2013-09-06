@@ -1,16 +1,9 @@
 --TREE FELLER
-<<<<<<< HEAD
 --Plants then cuts down a tree, harvesting saplings if possible.
---v0.4.1
+--v0.4.2
 --Latest Major Change: Turtle now destroys even more leaves, crossing the tree as it goes
---Latest Minor Change: Destroys leaves all around the central trunk now, should give a decent harvest of saplings
+--Latest Minor Change: Merge Complete - Puts Spare saplings in sapling chest
 --Author: V38
-=======
---v0.3.2
---Latest Change: Turtle now destroys more leaves on the way up
---Latest Minor Revision: Add Delay and prevent logs going in the wrong slot
---Author V38
->>>>>>> origin/master
 
 function Main()
     while true do
@@ -18,7 +11,7 @@ function Main()
         Fell()
         Refuel()
         Store()
-        sleep(20)
+        sleep(10)
     end
 end
 
@@ -74,17 +67,23 @@ end
 
 function Store()
     turtle.turnRight()
-    turtle.select(14)
+    turtle.select(14) --grab saplings
     if turtle.getItemCount(14)==0 then
         turtle.suck()
     end
+    for i=1, 12 do --put saplings in the sapling chest
+        turtle.select(i)
+        if turtle.compareTo(14) then
+            turtle.drop()
+        end
+    end
     turtle.turnRight()
-    for i=1, 12 do
+    for i=1, 12 do --deposit wood rubber w/e
         turtle.select(i)
         turtle.drop()
     end
     turtle.turnRight()
-    turtle.select(15)
+    turtle.select(15) --grab bonemeal
     if(turtle.getItemCount(15) == 0) then
         turtle.suck()
     end
