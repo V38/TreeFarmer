@@ -1,8 +1,8 @@
 --TREE FELLER
 --Plants then cuts down a tree, harvesting saplings if possible.
---v0.4.2
+--v0.4.3
 --Latest Major Change: Turtle now destroys even more leaves, crossing the tree as it goes
---Latest Minor Change: Merge Complete - Puts Spare saplings in sapling chest
+--Latest Minor Change: Turtle needs fuel badly
 --Author: V38
 
 function Main()
@@ -53,7 +53,9 @@ end
 
 function Refuel()
     turtle.select(16)
-    turtle.refuel(1)
+    turtle.refuel(2)
+    turtle.select(1)
+    turtle.refuel(4)
 end
 
 function Plant()
