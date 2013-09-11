@@ -1,6 +1,6 @@
 --Main Execution Code
 
-require "TreeFarmAPI"
+local TreeFarmAPI = require "TreeFarmAPI"
 
 function Main()
     while true do
