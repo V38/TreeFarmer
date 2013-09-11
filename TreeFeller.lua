@@ -1,19 +1,7 @@
---TREE FELLER
---Plants then cuts down a tree, harvesting saplings if possible.
---v0.4.4
---Latest Major Change: Turtle now destroys even more leaves, crossing the tree as it goes
---Latest Minor Change: Efficiency increase by zigzagging up tree
---Author: V38
+--Tree Farmer API
+--Provides functions for cutting trees
 
-function Main()
-    while true do
-        Plant()
-        Fell()
-        Refuel()
-        Store()
-        sleep(5)
-    end
-end
+local TreeFarmAPI = {}
 
 function Fell()
     turtle.select(1)
@@ -55,11 +43,11 @@ function SpinDig()
     end
 end
 
-function Refuel()
+function Refuel(i)
     turtle.select(16)
-    turtle.refuel(2)
+    turtle.refuel(i)
     turtle.select(1)
-    turtle.refuel(4)
+    turtle.refuel(i)
 end
 
 function Plant()
@@ -96,4 +84,4 @@ function Store()
     turtle.turnRight()
 end
 
-Main()
+return = TreeFarmAPI
