@@ -4,10 +4,10 @@ require "TreeFarmAPI"
 
 function Main()
     while true do
-        Plant()
-        Fell()
-        Refuel()
-        Store()
+        TreeFarmAPI.Plant()
+        TreeFarmAPI.Fell()
+        TreeFarmAPI.Refuel(4)
+        TreeFarmAPI.Store()
         sleep(5)
     end
 end
