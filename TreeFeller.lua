@@ -1,8 +1,8 @@
 --TREE FELLER
 --Plants then cuts down a tree, harvesting saplings if possible.
---v0.4.3
+--v0.4.4
 --Latest Major Change: Turtle now destroys even more leaves, crossing the tree as it goes
---Latest Minor Change: Turtle needs fuel badly
+--Latest Minor Change: Efficiency increase by zigzagging up tree
 --Author: V38
 
 function Main()
@@ -11,13 +11,14 @@ function Main()
         Fell()
         Refuel()
         Store()
-        sleep(10)
+        sleep(5)
     end
 end
 
 function Fell()
     turtle.select(1)
     inLeaves = false
+    nearSide = false
     while turtle.detect() do
         if inLeaves then
             SpinDig()
@@ -27,10 +28,7 @@ function Fell()
             SpinDig()
             turtle.turnRight()
             turtle.turnRight()
-            turtle.forward()
-            turtle.forward()
-            turtle.turnRight()
-            turtle.turnRight()
+            nearSide = not nearSide
         end
         turtle.dig()
         if turtle.detectUp() then
@@ -38,6 +36,12 @@ function Fell()
             inLeaves = true
         end
         turtle.up()
+    end
+    if not nearSide do
+        turtle.forward()
+        turtle.forward()
+        turtle.turnRight()
+        turtle.turnRight()
     end
     while not turtle.detectDown() do
         turtle.down()
